@@ -55,9 +55,7 @@ async function run() {
 
     app.put("/equipments/:id", async (req, res) => {
       const id = req.params.id;
-      const equipment = req.body;
-      console.log("Body", equipment, id);
-    
+      const equipment = req.body;    
       const filter = { _id: new ObjectId(id) };
       const options = { upsert: true };
     
@@ -76,7 +74,7 @@ async function run() {
         },
       };
     
-      console.log("updateDoc", updateDoc);
+      // console.log("updateDoc", updateDoc);
     
       const result = await equipmentCollection.updateOne(filter, updateDoc, options);
       res.send(result);
